@@ -1,4 +1,4 @@
-module otp
+module github.com/oneliang/frame-golang/otp
 
 go 1.21
 
