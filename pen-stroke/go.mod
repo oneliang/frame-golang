@@ -1,4 +1,4 @@
-module github.com/oneliang/frame-golang/canvas
+module github.com/oneliang/frame-golang/pen-stroke
 
 go 1.22.2
 
