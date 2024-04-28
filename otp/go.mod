@@ -1,6 +1,6 @@
 module github.com/oneliang/frame-golang/otp
 
-go 1.21
+go 1.22.2
 
 require github.com/pquerna/otp v1.4.0
 

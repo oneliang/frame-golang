@@ -3,9 +3,9 @@ package main
 import (
 	"bufio"
 	"fmt"
+	myotp "github.com/oneliang/frame-golang/otp"
 	"github.com/pquerna/otp"
 	"os"
-	myotp "otp"
 )
 
 func display(key *otp.Key, data []byte) {
