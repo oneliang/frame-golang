@@ -3,7 +3,7 @@ package oss
 import (
 	"errors"
 	"fmt"
-	"github.com/aliyun/aliyun-oss-go-sdk/oss"
+	aliyunOss "github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"github.com/oneliang/util-golang/file"
 	"log"
 	"path/filepath"
@@ -14,11 +14,11 @@ type ClientWrapper struct {
 	accessKeyId     string
 	accessKeySecret string
 	bucket          string
-	ossClient       *oss.Client
+	ossClient       *aliyunOss.Client
 }
 
 func NewClientWrapper(endpoint string, accessKeyId string, accessKeySecret string, bucket string) (*ClientWrapper, error) {
-	ossClient, err := oss.New(endpoint, accessKeyId, accessKeySecret)
+	ossClient, err := aliyunOss.New(endpoint, accessKeyId, accessKeySecret)
 	if err != nil {
 		log.Fatalf("connect to oss error, endpoint:%s, error:%v", endpoint, err)
 		return nil, err
@@ -39,7 +39,7 @@ func (this *ClientWrapper) uploadFileToOss(objectKey string, filePath string) er
 		log.Printf("get bucket error, bucket:%s, error%v", this.bucket, err)
 		return err
 	}
-	objectAcl := oss.ObjectACL(oss.ACLPublicRead)
+	objectAcl := aliyunOss.ObjectACL(aliyunOss.ACLPublicRead)
 	if err = clientBucket.PutObjectFromFile(objectKey, filePath, objectAcl); err != nil {
 		log.Printf("put object from file error:%v", err)
 		return err
@@ -73,7 +73,7 @@ func (this *ClientWrapper) downloadFileFromOss(objectKey string, filePath string
 		log.Printf("get bucket error, bucket:%s, error%v", this.bucket, err)
 		return err
 	}
-	objectAcl := oss.ObjectACL(oss.ACLPublicRead)
+	objectAcl := aliyunOss.ObjectACL(aliyunOss.ACLPublicRead)
 	if err = clientBucket.GetObjectToFile(objectKey, filePath, objectAcl); err != nil {
 		log.Printf("get object to file error:%v", err)
 		return err
