@@ -1,5 +1,6 @@
 go 1.22.2
 use (
+	aliyun
 	otp
 	kratos/cmd/protoc-gen-go-http-optimize
 	pen-stroke
