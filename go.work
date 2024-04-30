@@ -3,5 +3,5 @@ use (
 	aliyun
 	otp
 	kratos/cmd/protoc-gen-go-http-optimize
-	pen-stroke
+	pen_stroke
 )

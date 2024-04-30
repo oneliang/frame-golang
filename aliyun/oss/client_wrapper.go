@@ -1,4 +1,4 @@
-package oss
+package aliyunOss
 
 import (
 	"errors"
