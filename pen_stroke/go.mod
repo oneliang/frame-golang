@@ -1,4 +1,4 @@
-module github.com/oneliang/frame-golang/pen-stroke
+module github.com/oneliang/frame-golang/pen_stroke
 
 go 1.22.2
 
