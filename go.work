@@ -5,4 +5,5 @@ use (
 	kratos/cmd/protoc-gen-go-http-optimize
 	pen_stroke
 	wechat
+	parallel
 )
