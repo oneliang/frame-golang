@@ -6,4 +6,9 @@ use (
 	pen_stroke
 	wechat
 	parallel
+	test
+	context
+	http
+	query
+	ioc
 )
