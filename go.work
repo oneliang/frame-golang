@@ -11,4 +11,5 @@ use (
 	http
 	query
 	ioc
+	mqtt
 )
