@@ -1,4 +1,4 @@
-module cmd
+module github.com/oneliang/frame-golang/mqtt
 
 go 1.22.2
 
