@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"github.com/oneliang/frame-golang/pen-stroke/tql"
+	"github.com/oneliang/frame-golang/pen_stroke/tql"
 	"testing"
 	"time"
 )
