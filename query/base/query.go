@@ -130,7 +130,7 @@ func (this Query) Exec(execSql string, args []any) (sql.Result, error) {
 		this.logger.Printf("Error in RowsAffected() after exec. sql: %s, err: %v", execSql, err)
 		return nil, err
 	}
-	this.logger.Printf("Exec end[%d], sql: %s, rows affected:%d", rowsAffected, execSql)
+	this.logger.Printf("Exec end[%d], sql: %s", rowsAffected, execSql)
 
 	return result, nil
 }
