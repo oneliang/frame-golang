@@ -55,6 +55,10 @@ func (this *Job) Execute() {
 	//}
 }
 
+func (this *Job) Finish() {
+
+}
+
 func CollectForProcessor(job *Job, jobStep *JobStep, value any, contextAction string, transformContext TransformContext[any]) {
 	//logger.debug("parallelTransformContext:%s", parallelTransformContext)
 	if jobStep.IsTransformProcessor() && transformContext != nil {
@@ -89,5 +93,8 @@ func CollectForProcessor(job *Job, jobStep *JobStep, value any, contextAction st
 		//	job.saveCache()
 		//	job.finish()
 		//}
+		if contextAction == CONTEXT_ACTION_FINISHED {
+			job.Finish()
+		}
 	}
 }

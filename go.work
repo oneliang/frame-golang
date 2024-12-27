@@ -12,4 +12,5 @@ use (
 	query
 	ioc
 	mqtt
+	datasource
 )
