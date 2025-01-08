@@ -1,4 +1,4 @@
-module github.com/oneliang/frame-golang/test
+module github.com/oneliang/frame-golang/transfer
 
 go 1.22.2
 
@@ -22,4 +22,5 @@ replace (
 	github.com/oneliang/frame-golang/http/action v0.0.0 => ./../http/action
 	github.com/oneliang/frame-golang/ioc v0.0.0 => ./../ioc
 	github.com/oneliang/frame-golang/query v0.0.0 => ./../query
+	github.com/oneliang/frame-golang/parallel v0.0.0 => ./../parallel
 )

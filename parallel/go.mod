@@ -1,4 +1,4 @@
-module parallel
+module github.com/oneliang/frame-golang/parallel
 
 go 1.22.2
 

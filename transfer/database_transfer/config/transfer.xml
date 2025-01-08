@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE transfer SYSTEM "transfer.dtd">
+<transfer>
+    <fromTable>
+        <mainTable name="t_module" sequenceKey="id">
+            <column name="id" dataKey="id"/>
+            <column name="name" dataKey="name"/>
+            <column name="project_id" dataKey="project_id"/>
+            <column name="create_time" dataKey="create_time"/>
+        </mainTable>
+    </fromTable>
+    <toTable name="t_module_copy" comment="copy">
+        <toColumn dataKey="name" name="name" databaseType="varchar" length="20" defaultValue="" comment="名字"/>
+        <toColumn dataKey="project_id" name="project_id" databaseType="int" length="10" defaultValue="0" comment="项目Id"/>
+        <toColumn dataKey="create_time" name="create_time" databaseType="datetime" length="3" defaultValue="1970-01-01 00:00:00" comment="创建时间"/>
+    </toTable>
+
+</transfer>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT transfer (fromTable, toTable)>
+<!ELEMENT fromTable (mainTable, slaveTable*)>
+<!ELEMENT mainTable (column*)>
+<!ATTLIST mainTable name CDATA #REQUIRED>
+<!ATTLIST mainTable sequenceKey CDATA #REQUIRED>
+<!ELEMENT slaveTable (column*)>
+<!ATTLIST slaveTable name CDATA #REQUIRED>
+<!ATTLIST slaveTable mergeKeys CDATA #REQUIRED>
+<!ELEMENT column EMPTY>
+<!ATTLIST column name CDATA #REQUIRED>
+<!ATTLIST column dataKey CDATA #REQUIRED>
+<!ELEMENT toTable (toColumn*)>
+<!ATTLIST toTable name CDATA #REQUIRED>
+<!ATTLIST toTable comment CDATA #IMPLIED>
+<!ELEMENT toColumn EMPTY>
+<!ATTLIST toColumn dataKey CDATA #REQUIRED>
+<!ATTLIST toColumn name CDATA #REQUIRED>
+<!ATTLIST toColumn databaseType (varchar|int|float|datetime) #REQUIRED>
+<!ATTLIST toColumn length CDATA #IMPLIED>
+<!ATTLIST toColumn precision CDATA #IMPLIED>
+<!ATTLIST toColumn nullable (false|true) #IMPLIED>
+<!ATTLIST toColumn defaultValue CDATA #IMPLIED>
+<!ATTLIST toColumn comment CDATA #IMPLIED>
