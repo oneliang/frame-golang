@@ -13,5 +13,6 @@ use (
 	ioc
 	mqtt
 	datasource
+	moonshot
     transfer
 )

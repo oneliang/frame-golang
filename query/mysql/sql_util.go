@@ -11,6 +11,7 @@ const (
 	VARCHAR  = "varchar"
 	DATETIME = "datetime"
 	INT      = "int"
+	UINT     = "uint"
 	FLOAT    = "float"
 )
 
@@ -60,6 +61,14 @@ func GenerateCreateTableSql(tableDefinition *TableDefinition) string {
 			columnType = fmt.Sprintf("datetime(%d)", columnDefinition.Length)
 			break
 		case INT:
+			if common.StringIsBlank(columnDefaultValue) {
+				columnTempDefaultValue = "0"
+			} else {
+				columnTempDefaultValue = fmt.Sprintf("%s", columnDefaultValue)
+			}
+			columnType = fmt.Sprintf("int(%d)", columnDefinition.Length)
+			break
+		case UINT:
 			if common.StringIsBlank(columnDefaultValue) {
 				columnTempDefaultValue = "0"
 			} else {

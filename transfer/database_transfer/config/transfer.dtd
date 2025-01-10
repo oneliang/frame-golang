@@ -16,7 +16,7 @@
 <!ELEMENT toColumn EMPTY>
 <!ATTLIST toColumn dataKey CDATA #REQUIRED>
 <!ATTLIST toColumn name CDATA #REQUIRED>
-<!ATTLIST toColumn databaseType (varchar|int|float|datetime) #REQUIRED>
+<!ATTLIST toColumn databaseType (varchar|int|uint|float|datetime) #REQUIRED>
 <!ATTLIST toColumn length CDATA #IMPLIED>
 <!ATTLIST toColumn precision CDATA #IMPLIED>
 <!ATTLIST toColumn nullable (false|true) #IMPLIED>
