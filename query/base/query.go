@@ -68,7 +68,7 @@ func (this Query) QueryForMap(querySql string, args []any, columnDataMap map[str
 }
 
 // QueryForMapWithRowProcessor .
-func (this Query) QueryForMapWithRowProcessor(querySql string, args []any, columnDataMap map[string]*ColumnData, rowProcessor func(rowDataMap *map[string]any)) ([]*map[string]any, error) {
+func (this Query) QueryForMapWithRowProcessor(querySql string, args []any, columnDataMap map[string]*ColumnData, rowProcessor func(rowDataMapPointer *map[string]any)) ([]*map[string]any, error) {
 	dataList := make([]*map[string]any, 0)
 	if columnDataMap == nil || len(columnDataMap) <= 0 {
 		return dataList, errors.New("columnDataMap is nil or empty")
