@@ -61,11 +61,13 @@ func (this Query) QueryWithEachRow(querySql string, args []any, eachRowCallback 
 		return nil
 	})
 }
+
+// QueryForMap .
 func (this Query) QueryForMap(querySql string, args []any, columnDataMap map[string]*ColumnData) ([]*map[string]any, error) {
 	return this.QueryForMap(querySql, args, columnDataMap)
 }
 
-// QueryForMap .
+// QueryForMapWithRowProcessor .
 func (this Query) QueryForMapWithRowProcessor(querySql string, args []any, columnDataMap map[string]*ColumnData, rowProcessor func(rowDataMap *map[string]any)) ([]*map[string]any, error) {
 	dataList := make([]*map[string]any, 0)
 	if columnDataMap == nil || len(columnDataMap) <= 0 {
