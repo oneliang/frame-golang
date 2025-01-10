@@ -64,7 +64,7 @@ func (this Query) QueryWithEachRow(querySql string, args []any, eachRowCallback 
 
 // QueryForMap .
 func (this Query) QueryForMap(querySql string, args []any, columnDataMap map[string]*ColumnData) ([]*map[string]any, error) {
-	return this.QueryForMap(querySql, args, columnDataMap)
+	return this.QueryForMapWithRowProcessor(querySql, args, columnDataMap, nil)
 }
 
 // QueryForMapWithRowProcessor .
