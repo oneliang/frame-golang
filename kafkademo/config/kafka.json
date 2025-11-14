@@ -1,0 +1,9 @@
+{
+    "topic": [
+        "oneliang-test"
+    ],
+    "bootstrapServers": [
+        "localhost:9092"
+    ],
+    "consumerGroupId": "oneliang-test-consumer"
+}
