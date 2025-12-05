@@ -69,7 +69,7 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 		}
 	}()
 
-	requestUri := request.RequestURI
+	requestUri := request.URL.Path
 	httpMethod := request.Method
 	for _, beforeInterceptor := range this.globalBeforeInterceptorList {
 		result := beforeInterceptor(requestUri, httpMethod, request, writer)
@@ -93,17 +93,17 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 			dataString = string(data)
 		}
 		if err != nil {
-			this.logger.Error("Execute http handler error, data:%s", nil, dataString)
+			this.logger.Error("Execute http handler error, http key:%s, data:%s", nil, httpHandlerKey, dataString)
 			http.Error(writer, dataString, statusCode)
 			return
 		} else {
 			writeResult, writeErr := writer.Write(data)
 			if writeErr != nil {
-				this.logger.Error("Response write error, write result:%d", nil, writeResult)
+				this.logger.Error("Response write error, http key:%s, write result:%d", nil, httpHandlerKey, writeResult)
 				http.Error(writer, "Response write error", 500)
 				return
 			} else {
-				this.logger.Info("Response, data:%s, status code:%d", dataString, statusCode)
+				this.logger.Info("Response, http key:%s, data:%s, status code:%d", httpHandlerKey, dataString, statusCode)
 			}
 		}
 	} else {
