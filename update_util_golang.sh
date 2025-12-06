@@ -12,6 +12,6 @@ do
   for ((j=0;j<${#dependencies_array[@]};j++))
   do
     echo "exec go get, getting ${dependencies_array[$j]}"
-    go get ${dependencies_array[$j]}
+    go get -u ${dependencies_array[$j]}
   done
 done

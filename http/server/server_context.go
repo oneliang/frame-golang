@@ -64,7 +64,7 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 	defer func() {
 		if r := recover(); r != nil {
 			errorMessage := fmt.Sprintf("Internal server error, has panic:%v", r)
-			this.logger.Error(errorMessage, nil)
+			this.logger.Error(errorMessage, errors.New(errorMessage))
 			http.Error(writer, errorMessage, 500)
 		}
 	}()
