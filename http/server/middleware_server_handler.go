@@ -14,7 +14,8 @@ type MiddlewareServerHandler struct {
 // NewMiddlewareServerHandler .
 func NewMiddlewareServerHandler(serverHandler *ServerHandler) *MiddlewareServerHandler {
 	return &MiddlewareServerHandler{
-		middleware: make([]middleware.Middleware, 0),
+		middleware:    make([]middleware.Middleware, 0),
+		serverHandler: serverHandler,
 	}
 }
 
