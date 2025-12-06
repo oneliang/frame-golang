@@ -1,20 +1,20 @@
 package server
 
-import "net/http"
+import (
+	"github.com/oneliang/frame-golang/http/middleware"
+	"net/http"
+)
 
 // MiddlewareServerHandler .
 type MiddlewareServerHandler struct {
-	middleware    []Middleware
+	middleware    []middleware.Middleware
 	serverHandler *ServerHandler
 }
-
-// Middleware .
-type Middleware func(http.Handler) http.Handler
 
 // NewMiddlewareServerHandler .
 func NewMiddlewareServerHandler(serverHandler *ServerHandler) *MiddlewareServerHandler {
 	return &MiddlewareServerHandler{
-		middleware: make([]Middleware, 0),
+		middleware: make([]middleware.Middleware, 0),
 	}
 }
 
@@ -28,6 +28,6 @@ func (this *MiddlewareServerHandler) ServeHTTP(writer http.ResponseWriter, reque
 }
 
 // AddMiddleware .
-func (this *MiddlewareServerHandler) AddMiddleware(middleware Middleware) {
+func (this *MiddlewareServerHandler) AddMiddleware(middleware middleware.Middleware) {
 	this.middleware = append(this.middleware, middleware)
 }
