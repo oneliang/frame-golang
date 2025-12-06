@@ -88,11 +88,11 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 		//func(request *http.Request, writer http.ResponseWriter) (error, []byte, int)
 		err, data, statusCode := actionExecuteFunction(request, writer)
 		//err, data, statusCode :=reflect.ValueOf(actionExecuteFunction).Call([]reflect.Value{reflect.ValueOf(request), reflect.ValueOf(writer)})
-		dataString := ""
-		if data != nil {
-			dataString = string(data)
-		}
 		if err != nil {
+			dataString := ""
+			if data != nil {
+				dataString = string(data)
+			}
 			this.logger.Error("Execute http handler error, http key:%s, data:%s", nil, httpHandlerKey, dataString)
 			http.Error(writer, dataString, statusCode)
 			return
@@ -103,7 +103,7 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 				http.Error(writer, "Response write error", http.StatusInternalServerError)
 				return
 			} else {
-				this.logger.Info("Response, http key:%s, data:%s, status code:%d", httpHandlerKey, dataString, statusCode)
+				this.logger.Info("Response, http key:%s, data length:%s, status code:%d", httpHandlerKey, len(data), statusCode)
 			}
 		}
 	} else {
