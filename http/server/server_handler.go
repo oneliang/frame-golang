@@ -65,7 +65,7 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 		if r := recover(); r != nil {
 			errorMessage := fmt.Sprintf("Internal server error, has panic:%v", r)
 			this.logger.Error(errorMessage, errors.New(errorMessage))
-			http.Error(writer, errorMessage, 500)
+			http.Error(writer, errorMessage, http.StatusInternalServerError)
 		}
 	}()
 
@@ -100,7 +100,7 @@ func (this *ServerHandler) ServeHTTP(writer http.ResponseWriter, request *http.R
 			writeResult, writeErr := writer.Write(data)
 			if writeErr != nil {
 				this.logger.Error("Response write error, http key:%s, write result:%d", nil, httpHandlerKey, writeResult)
-				http.Error(writer, "Response write error", 500)
+				http.Error(writer, "Response write error", http.StatusInternalServerError)
 				return
 			} else {
 				this.logger.Info("Response, http key:%s, data:%s, status code:%d", httpHandlerKey, dataString, statusCode)
