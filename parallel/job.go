@@ -1,10 +1,13 @@
 package parallel
 
+import "github.com/oneliang/util-golang/goroutine"
+
 type Job struct {
 	name               string
 	jobConfiguration   *JobConfiguration
 	sourceProcessorSet []SourceProcessor[any]
 	firstJobStepList   []*JobStep
+	pool               *goroutine.Pool
 }
 
 func NewJob(name string, jobConfiguration *JobConfiguration) *Job {
@@ -16,6 +19,7 @@ func NewJob(name string, jobConfiguration *JobConfiguration) *Job {
 		jobConfiguration:   jobConfiguration,
 		sourceProcessorSet: []SourceProcessor[any]{},
 		firstJobStepList:   []*JobStep{},
+		pool:               goroutine.NewPool(jobConfiguration.poolSize),
 	}
 }
 
@@ -63,19 +67,21 @@ func CollectForProcessor(job *Job, jobStep *JobStep, value any, contextAction st
 	//logger.debug("parallelTransformContext:%s", parallelTransformContext)
 	if jobStep.IsTransformProcessor() && transformContext != nil {
 		if job.jobConfiguration.async {
-			go func() {
+			job.pool.AddTask(func(params ...any) error {
 				jobStep.transformProcessor.Process(value, transformContext)
-			}()
+				return nil
+			})
 		} else {
 			jobStep.transformProcessor.Process(value, transformContext)
 		}
 	} else if jobStep.IsSinkProcessor() {
 		for _, sinkProcessor := range jobStep.sinkProcessorList {
 			if job.jobConfiguration.async {
-				go func() {
+				job.pool.AddTask(func(params ...any) error {
 					//logger.debug("sink processor, value:%s", value)
 					sinkProcessor.Sink(value)
-				}()
+					return nil
+				})
 			} else {
 				//logger.debug("sink processor, value:%s", value)
 				sinkProcessor.Sink(value)

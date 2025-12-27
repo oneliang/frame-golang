@@ -9,9 +9,9 @@ require (
 )
 
 require (
-	github.com/oneliang/util-golang/base v0.0.0-20250107091240-ffda63863297 // indirect
-	github.com/oneliang/util-golang/common v0.0.0-20250107091240-ffda63863297 // indirect
-	github.com/oneliang/util-golang/constants v0.0.0-20250107091240-ffda63863297 // indirect
+	github.com/oneliang/util-golang/base v0.0.0-20251227114245-24be71ceaec1 // indirect
+	github.com/oneliang/util-golang/common v0.0.0-20251227114245-24be71ceaec1 // indirect
+	github.com/oneliang/util-golang/constants v0.0.0-20251227114245-24be71ceaec1 // indirect
 	github.com/oneliang/util-golang/logging v0.0.0-20241218054501-34db8a98816d // indirect
 )
 
@@ -21,6 +21,6 @@ replace (
 	github.com/oneliang/frame-golang/http v0.0.0 => ./../http
 	github.com/oneliang/frame-golang/http/action v0.0.0 => ./../http/action
 	github.com/oneliang/frame-golang/ioc v0.0.0 => ./../ioc
-	github.com/oneliang/frame-golang/query v0.0.0 => ./../query
 	github.com/oneliang/frame-golang/parallel v0.0.0 => ./../parallel
+	github.com/oneliang/frame-golang/query v0.0.0 => ./../query
 )

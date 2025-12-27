@@ -1,5 +1,5 @@
 #!/bin/bash
-project_array=("test" "transfer")
+project_array=("test" "transfer" "parallel")
 dependencies_array=("github.com/oneliang/util-golang/constants@main" "github.com/oneliang/util-golang/base@main" "github.com/oneliang/util-golang/common@main")
 for ((i=0;i<${#project_array[@]};i++))
 do

@@ -58,7 +58,7 @@ func (this *defaultSinkProcessor) Sink(value any) {
 }
 
 func TestTransfer(t *testing.T) {
-	jobConfiguration := NewJobConfiguration(true, false)
+	jobConfiguration := NewJobConfiguration(true, false, 4)
 	sourceProcessor := &defaultSourceProcessor{}
 	job := NewJob("job", jobConfiguration)
 	job.AddSourceProcessor(sourceProcessor)
